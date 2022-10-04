@@ -14,6 +14,27 @@ namespace WinFormsApp3
         }
 
 
+        private void PriceCalculation(TextBox textBoxAmount , TextBox textBoxPrice)
+        {
+            MiniMrAmount = Convert.ToDouble(textBoxAmount.Text);
+            if (!string.IsNullOrEmpty(textBoxPrice.Text))
+            {
+                try
+                {
+                    temp = 0;
+                    MiniMrPrice = Convert.ToDouble(textBoxPrice.Text);
+                    temp = Convert.ToDouble(label1.Text);
+                    temp += (MiniMrAmount * MiniMrPrice);
+                    label1.Text = temp.ToString();
+                }
+                catch (Exception ex)
+                {
+                    textBoxPrice.Text = string.Empty;
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBox1.SelectedItem.ToString() == "A-92")
@@ -162,96 +183,38 @@ namespace WinFormsApp3
             }
         }
 
-        private void textBox61_TextChanged(object sender, EventArgs e)
-        {
-            MiniMrAmount = Convert.ToDouble(textBox10.Text);
-
-            if (!string.IsNullOrEmpty(textBox61.Text))
-            {
-                try
-                {
-                    double tempBox61;
-                    
-                    temp = 0;
-                    MiniMrPrice = Convert.ToDouble(textBox61.Text);
-                    temp = Convert.ToDouble(label1.Text);
-                    temp += (MiniMrAmount * MiniMrPrice);
-                    label1.Text = temp.ToString();
-                }
-                catch (Exception ex)
-                {
-                    textBox61.Text = string.Empty;
-                    MessageBox.Show(ex.Message);
-                }
-            }
-        }
-
 
         private void textBox62_TextChanged(object sender, EventArgs e)
         {
-            MiniMrAmount = Convert.ToDouble(textBox8.Text);
 
-            if (!string.IsNullOrEmpty(textBox62.Text))
-            {
-                try
-                {
-                    temp = 0;
-                    MiniMrPrice = Convert.ToDouble(textBox62.Text);
-                    temp = Convert.ToDouble(label1.Text);
-                    temp += (MiniMrAmount * MiniMrPrice);
-                    label1.Text = temp.ToString();
-                }
-                catch (Exception ex)
-                {
-                    textBox62.Text = string.Empty;
-                    MessageBox.Show(ex.Message);
-                }
-            }
         }
 
         private void textBox63_TextChanged(object sender, EventArgs e)
         {
-            MiniMrAmount = Convert.ToDouble(textBox4.Text);
 
-            if (!string.IsNullOrEmpty(textBox63.Text))
-            {
-                try
-                {
-                    temp = 0;
-                    MiniMrPrice = Convert.ToDouble(textBox63.Text);
-                    temp = Convert.ToDouble(label1.Text);
-                    temp += (MiniMrAmount * MiniMrPrice);
-                    label1.Text = temp.ToString();
-                }
-                catch (Exception ex)
-                {
-                    textBox63.Text = string.Empty;
-                    MessageBox.Show(ex.Message);
-                }
-            }
         }
 
         private void textBox64_TextChanged(object sender, EventArgs e)
         {
-            MiniMrAmount = Convert.ToDouble(textBox5.Text);
 
-            if (!string.IsNullOrEmpty(textBox64.Text))
-            {
-                try
-                {
-                    temp = 0;
-                    MiniMrPrice = Convert.ToDouble(textBox64.Text);
-                    label1.Text += (MiniMrAmount * MiniMrPrice).ToString();
-                    temp = Convert.ToDouble(label1.Text);
-                    temp += (MiniMrAmount * MiniMrPrice);
-                    label1.Text = temp.ToString();
-                }
-                catch (Exception ex)
-                {
-                    textBox64.Text = string.Empty;
-                    MessageBox.Show(ex.Message);
-                }
-            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            label1.Text = "0";
+            PriceCalculation(textBox10, textBox61);
+            PriceCalculation(textBox8, textBox62);
+            PriceCalculation(textBox4, textBox63);
+            PriceCalculation(textBox5, textBox64);
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            double s = Convert.ToDouble(label4.Text);
+            double s1 = Convert.ToDouble(label1.Text);
+
+            label7.Text =  (s1+s).ToString();
         }
     }
 }
